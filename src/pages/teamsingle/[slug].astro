@@ -38,7 +38,7 @@ const { person } = Astro.props;
             <div class="icons">
               {person.social_links.map((link) => (
                 <a href={link.url} target="_blank" rel="noopener" class="social-link">
-                  <img src={`/src/icons/${link.icon}.svg`} alt={link.platform} class="icon" />
+                  <img src={`/images/${link.icon}.svg`} alt={link.platform} class="icon" />
                 </a>
               ))}
             </div>
