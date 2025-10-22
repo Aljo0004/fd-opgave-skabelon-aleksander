@@ -120,22 +120,17 @@ import employees from "@data/employees.json";
     width: 24px;
     height: 24px;
   }
-    @media (max-width: 1000px) {
-      .team-cards-grid {
+    @media (max-width: 800px) {
+        .team-cards-grid {
         grid-template-columns: 1fr;
         gap: var(--space-l);
-      }
-      .teamtext div {
-        flex-direction: column;
-        gap: var(--space-m);
-      }
-      .teamtext div :first-child {
-        width: 100%;
-      }
-      .teamtext div :last-child a {
-        margin-left: auto;
-        margin-right: auto;
-        display: block;
-      }
+        }
+        .teamtext div {
+          flex-direction: column;
+          gap: var(--space-m);
+        }
+        .teamtext div :first-child {
+          width: 100%;  
+    }
     }
 </style>
