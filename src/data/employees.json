@@ -118,21 +118,21 @@
       {
         "platform": "instagram",
         "url": "#",
-        "icon": "/images/instagram"
+        "icon": "instagram"
       },
       {
         "platform": "facebook",
         "url": "#",
-        "icon": "/images/facebook"
+        "icon": "facebook"
       },
       {
         "platform": "twitter",
         "url": "#",
-        "icon": "/images/twitter"
+        "icon": "twitter"
       }
     ],
     "slug": "ryan-jackson",
-    "img": "/images/ryan.webp"
+    "img": "ryan.webp"
   },
   {
     "id": 6,
