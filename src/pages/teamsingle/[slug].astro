@@ -1,0 +1,162 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../layouts/Header.astro";
+import Footer from "../../layouts/Footer.astro";
+import employees from "../../data/employees.json";
+import greenbox from "../../assets/images/greenBox.png";
+import pattern from "../../assets/images/pattern.png";
+import { Image } from "astro:assets";
+import Subscribe from "@components/Subscribe.astro";
+
+export async function getStaticPaths() {
+  return employees.map((person) => ({
+    params: { slug: person.slug },
+    props: { person },
+  }));
+}
+
+const { person } = Astro.props;
+---
+
+<Layout>
+  <Header />
+  {
+    person ? (
+      <section>
+        <div class="employee_image_wrapper">
+          <img src={greenbox.src} alt="Green Box" class="bg_greenbox" />
+          <img src={pattern.src} alt="Pattern" class="bg_pattern" />
+          <img src={person.img} alt={person.name} class="employee_image" />
+        </div>
+        <div class="employee_info">
+          <div class="name_icons">
+            <div class="name_title">
+              <h2>{person.name}</h2>
+              <h3>{person.title}</h3>
+            </div>
+            <div class="line_icons" />
+            <div class="icons">
+              {person.social_links.map((link) => (
+                <a href={link.url} target="_blank" rel="noopener" class="social-link">
+                  <img src={`/src/icons/${link.icon}.svg`} alt={link.platform} class="icon" />
+                </a>
+              ))}
+            </div>
+          </div>
+          <p>{person.description_long}</p>
+          <div class="line" />
+          <h3>Past Experience</h3>
+          <p>{person.past_experience}</p>
+        </div>
+      </section>
+    ) : (
+      <p>Employee not found.</p>
+    )
+  }
+  <Subscribe />
+</Layout>
+<Footer />
+
+<style>
+  section {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    margin: var(--space-l) auto;
+    gap: var(--space-2xl);
+    margin-top: 8rem;
+  }
+  .employee_image_wrapper {
+    position: relative;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 250px;
+    min-height: 250px;
+  }
+  .employee_image {
+    position: relative;
+    width: 90%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  }
+  .bg_greenbox {
+    position: absolute;
+    left: 0;
+    top: -1rem;
+    width: 60%;
+    height: auto;
+    z-index: -1;
+  }
+  .bg_pattern {
+    position: absolute;
+    left: -2rem;
+    top: -3rem;
+    width: 60%;
+    height: auto;
+    z-index: -2;
+  }
+  .employee_info {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .name_icons {
+    display: grid;
+    grid-template-columns: 1fr 0.5fr 1fr;
+    margin-bottom: 3rem;
+  }
+  .line_icons {
+    border: 0.5px solid var(--p-grey);
+    margin: 0 1rem;
+    width: 1px;
+    justify-self: center;
+    height: 30px;
+    align-self: center;
+  }
+  .icons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .line {
+    border: 0.5px solid var(--p-grey);
+    width: 100%;
+    margin: var(--space-l) 0;
+  }
+  @media (max-width: 800px) {
+    section {
+      flex-direction: column;
+      width: 90%;
+      margin: var(--space-l) auto;
+      gap: var(--space-l);
+      margin-top: 4rem;
+    }
+    .employee_image_wrapper {
+      width: 100%;
+    }
+    .employee_image {
+      width: 70%;
+    }
+    .bg_greenbox {
+      width: 40%;
+      left: -1rem;
+      top: -1rem;
+    }
+    .bg_pattern {
+      width: 40%;
+      left: -3rem;
+      top: -2rem;
+    }
+    .employee_info {
+      width: 100%;
+    }
+    .name_icons {
+      grid-template-columns: 1fr 0.2fr 1fr;
+      margin-bottom: 2rem;
+    }
+  }
+</style>

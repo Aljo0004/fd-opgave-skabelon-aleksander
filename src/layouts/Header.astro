@@ -1,0 +1,107 @@
+---
+import Logo from "@components/Logo.astro";
+import Login from "@components/Login.astro";
+---
+
+<header>
+  <nav>
+    <Logo />
+    <ul id="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/case">Case Study</a></li>
+      <li><a href="/team">Team</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+    <Login />
+    <button class="burger-menu" id="burger" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+</header>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const burger = document.getElementById('burger');
+    const navLinks = document.getElementById('nav-links');
+    burger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  });
+</script>
+<style>
+  @layer component {
+    header {
+      background-color: var(--bg-header);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+    }
+    ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+    ul li a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    ul li a:hover {
+      color: var(--yellow);
+    }
+    .burger-menu {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin-left: auto;
+    }
+    .burger-menu span {
+      width: 25px;
+      height: 3px;
+      background-color: var(--white);
+      border-radius: 2px;
+    }
+  }
+  @media (max-width: 800px) {
+    nav {
+      position: relative;
+      justify-content: flex-start;
+      gap: 1rem;
+    }
+    nav ul {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: -2rem;
+      background: var(--bg-header);
+      flex-direction: column;
+      width: 180px;
+      padding: 1rem 0;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      z-index: 1001;
+    }
+    nav ul.active {
+      display: flex;
+    }
+    nav ul li {
+      margin: 0.5rem 1rem;
+      text-align: right;
+    }
+    .burger-menu {
+      display: flex;
+      margin-left: auto;
+    }
+  }
+</style>

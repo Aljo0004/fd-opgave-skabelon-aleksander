@@ -5,10 +5,10 @@ import caseStudy from "@data/caseStudy.json";
 const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
 ---
 
-<article>
-  <header>
+<article class="container content">
+  <header class="full_bleed">
     <DynamicImage imagePath={image} altText={caseName} />
-    <div class="case-details">
+    <div class="case-details margin">
       <dl>
         <div>
           <dt>Case Name</dt>
@@ -29,11 +29,7 @@ const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
   {
     caseStudy.sections.map((section) => (
       <section>
-        {caseStudy.sections[0] === section ? (
-          <h2>{section.title}</h2>
-        ) : (
-          <h3>{section.title}</h3>
-        )}
+        {caseStudy.sections[0] === section ? <h2>{section.title}</h2> : <h3>{section.title}</h3>}
 
         {Array.isArray(section.content) ? (
           <>
@@ -51,17 +47,139 @@ const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
             ))}
           </ul>
         )}
-        {section.image && (
-          <DynamicImage
-            imagePath={section.image}
-            altText={section.title}
-            width={600}
-            height={400}
-          />
-        )}
+        {section.image && <DynamicImage imagePath={section.image} altText={section.title} width={600} height={400} />}
       </section>
     ))
   }
 </article>
 
-<style></style>
+<style>
+  .content {
+    display: grid;
+    grid-template-columns:
+      [full-start] 1fr
+      [feature-start] 6rem
+      [content-start] 70ch [content-end]
+      6rem [feature-end]
+      1fr [full-end];
+    gap: 2rem;
+  }
+
+  .content > * {
+    grid-column: content;
+  }
+  @media (max-width: 800px) {
+    .content > * {
+      grid-column: 1 !important;
+    }
+  }
+
+  .feature {
+    grid-column: feature !important;
+  }
+  .full {
+    grid-column: full !important;
+  }
+
+  article {
+    margin: var(--space-2xl) 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-l);
+
+    header img {
+      border-radius: 2rem;
+      width: 100%;
+      display: block;
+    }
+    .case-details {
+      max-width: 90%;
+      margin: -5rem auto 0 auto;
+      padding: var(--space-xl) 1rem;
+      display: flex;
+      justify-content: space-between;
+      border-radius: 1.875rem;
+      background-color: #000;
+      color: white;
+      position: relative;
+      z-index: 2;
+
+      dl {
+        display: flex;
+        align-items: flex-start;
+        gap: 3rem;
+
+        dt {
+          font-weight: 600;
+          font-size: var(--step--4);
+        }
+      }
+
+      a {
+        padding: 1rem 1rem;
+        background-color: var(--yellow);
+        border-radius: 2.625rem;
+        color: #000;
+        font-weight: 600;
+      }
+    }
+
+    section {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-m);
+
+      ul {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-xs);
+      }
+
+      img {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+      }
+    }
+  }
+  @media (max-width: 800px) {
+    .content {
+      grid-template-columns: 1fr;
+      padding: 0 4rem;
+      margin-right: 3rem;
+    }
+
+    article {
+      width: 100%;
+      margin: var(--space-l) 0;
+      box-sizing: border-box;
+      align-items: center;
+    }
+    header img {
+      margin-left: 2rem;
+    }
+
+    .case-details,
+    .case-details.margin {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: var(--space-m);
+      max-width: 100%;
+      margin: 0 auto;
+      box-sizing: border-box;
+      padding: var(--space-l) 0.5rem;
+    }
+    .case-details dl {
+      flex-direction: column;
+      gap: var(--space-m);
+    }
+    section {
+      width: 100%;
+      box-sizing: border-box;
+      align-items: center;
+    }
+  }
+</style>

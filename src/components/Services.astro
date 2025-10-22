@@ -4,11 +4,11 @@ import servicesData from "@data/services.json";
 console.log(servicesData);
 ---
 
-<ul>
+<ul class="cards-container">
   {
     servicesData.services.map((service) => (
-      <li>
-        <h2>{service.title}</h2>
+      <li class="card">
+        <h3>{service.title}</h3>
         <p>{service.description}</p>
         <a href="#0">{service.buttonText}</a>
       </li>
@@ -18,7 +18,44 @@ console.log(servicesData);
 
 <style>
   @layer components {
-    li {
+    .cards-container {
+      display: flex;
+      flex-direction: row;
+      gap: var(--space-l);
+      width: 76%;
+      margin: auto;
+      padding: var(--space-l);
+      position: relative;
+      top: -7rem;
+      list-style: none;
+    }
+    .card {
+      background-color: var(--bg-card);
+      border-radius: var(--space-s);
+      padding: var(--space-l);
+    }
+
+    .card h3 {
+      color: var(--white);
+      margin-bottom: var(--space-s);
+    }
+    .card p {
+      color: var(--white);
+      margin-bottom: var(--space-l);
+    }
+    .card a {
+      text-decoration: none;
+      color: var(--white);
+      background-color: var(--bg-black);
+      padding: var(--space-s);
+      border-radius: 30px;
     }
   }
+   @media (max-width: 800px) {
+    .cards-container {
+      flex-direction: column;
+      top: -2rem;
+      width: 90%;
+    }
+   }
 </style>

@@ -1,0 +1,183 @@
+---
+import ArrowLeft from "@icons/arrow-left.svg";
+import ArrowRight from "@icons/arrow--right.svg";
+import Cal from "@icons/cal.svg";
+import Card from "@icons/card.svg";
+import Law from "@icons/law.svg";
+import Money from "@icons/money.svg";
+---
+
+<section>
+  <div class="container">
+    <div>
+      <h2>Financial Projections</h2>
+      <p>Financial projections are essential for planning and monitoring a company’s performance. They provide insights into potential revenue, expenses, and profitability over specific periods.</p>
+    </div>
+    <!-- Klik tre gange på pilen før funktionen virker -->
+    <div class="arrows">
+      <button class="arrow-btn" aria-label="Previous" id="arrow-left">
+        <ArrowLeft />
+      </button>
+      <button class="arrow-btn" aria-label="Next" id="arrow-right">
+        <ArrowRight />
+      </button>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="cards_container">
+      <div class="card">
+        <Cal />
+        <h2>The Balance Sheet</h2>
+        <p>The Balance Sheet is a summary of the assets and liabilities and equity of a business at a specific point of time.</p>
+      </div>
+      <div class="card">
+        <Card />
+        <h2>Income Statement</h2>
+        <p>The Income (Profit and Loss) Statement, commonly referred to as the P&L statement, summarizes the revenue and expenses for a specific time period (one month, one quarter, one year, etc.)</p>
+      </div>
+      <div class="card">
+        <Law />
+        <h2>Financial Plan</h2>
+        <p>Keep your information current and review the documents on a regular basis (monthly or more often if needed). Review them with key individuals within your company.</p>
+      </div>
+      <div class="card">
+        <Money />
+        <h2>Financial Ratios</h2>
+        <p>Ratios are useful when comparing your company with the competition on financial performance and also when benchmarking the performance of your company.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+  section {
+    padding-top: var(--space-3xl);
+    padding-bottom: var(--space-3xl);
+    background-color: var(--bg-grey);
+  }
+  .container {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    margin: auto;
+    margin-top: var(--space-l);
+  }
+
+  h2 + p {
+    width: 60%;
+    color: var(--bg-black);
+  }
+  .arrows {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-s);
+    align-items: center;
+  }
+  .arrow-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--bg-black);
+    color: var(--white);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition:
+      background 0.2s,
+      color 0.2s;
+  }
+  .arrow-btn:hover {
+    background-color: var(--yellow);
+    color: var(--bg-black);
+  }
+  .wrap {
+    padding-inline: var(--scroll-padding);
+    scroll-padding-inline: var(--scroll-padding);
+    scroll-snap-type: x mandatory;
+    overflow-x: auto;
+    margin-bottom: var(--space-l);
+  }
+  .cards_container {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-l);
+    width: 100vw;
+    margin: auto;
+    margin-left: calc((100vw - 80%) / 2);
+    margin-top: var(--space-l);
+    overflow: hidden;
+    align-items: flex-start;
+  }
+  .card {
+    background-color: #ebebeb;
+    padding: var(--space-l);
+    border-radius: 20px;
+    flex: 1;
+    transition: background 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-s);
+  }
+  .card p {
+    width: 90%;
+  }
+  .card.active {
+    background-color: var(--bg-black);
+    color: var(--white);
+  }
+  .card.active svg {
+    color: var(--yellow);
+  }
+  .card.active p {
+    color: var(--white);
+  }
+   @media (max-width: 800px) {
+    .container {
+      flex-direction: column;
+      gap: var(--space-l);
+      width: 90%;
+    }
+    h2 + p {
+      width: 100%;
+    }
+    .cards_container {
+      flex-direction: column;
+      margin-left: 0;
+      gap: var(--space-2xl);
+      width: 100%;
+      align-items: stretch;
+    }
+    .card {
+      min-width: 0;
+      width: 100%;
+    }
+   }
+</style>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    let activeIndex = 0;
+    const cards = document.querySelectorAll(".card");
+    const leftBtn = document.getElementById("arrow-left");
+    const rightBtn = document.getElementById("arrow-right");
+
+    function updateActiveCard(newIndex) {
+      cards[activeIndex].classList.remove("active");
+      activeIndex = newIndex;
+      cards[activeIndex].classList.add("active");
+    }
+
+    leftBtn.addEventListener("click", () => {
+      if (activeIndex > 0) {
+        updateActiveCard(activeIndex - 1);
+      }
+    });
+
+    rightBtn.addEventListener("click", () => {
+      if (activeIndex < cards.length - 1) {
+        updateActiveCard(activeIndex + 1);
+      }
+    });
+  });
+</script>

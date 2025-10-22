@@ -1,0 +1,141 @@
+---
+import employees from "@data/employees.json";
+---
+
+<section>
+  <div class="teamtext">
+    <h1>Meet Our Great Team</h1>
+    <div>
+      <p>Welcome to our amazing team! We are a group of passionate individuals dedicated to excellence and innovation. Each member brings unique skills and experiences, working together to achieve our goals. Join us as we embark on exciting projects and create lasting impacts.</p>
+      <a href="#">Join our team</a>
+    </div>
+  </div>
+
+  <div class="team-cards-grid">
+    {
+      employees.map((person) => (
+        <div class="card" onclick={`window.location.href='/teamsingle/${person.slug}'`} style="cursor:pointer;">
+          <div class="img_wrapper">
+            <img src={person.img} alt={person.name} class="card-img" />
+            <p class="title">{person.title}</p>
+          </div>
+          <h3>{person.name}</h3>
+          <p class="desc">{person.description}</p>
+          <div class="social-links">
+            {person.social_links.map((link) => (
+              <a href={link.url} target="_blank" rel="noopener" class="social-link">
+                <img src={`/src/icons/${link.icon}.svg`} alt={link.platform} class="icon" />
+              </a>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  section {
+    width: 80%;
+    margin: auto;
+    margin-top: var(--space-2xl);
+  }
+  .teamtext {
+    width: 90%;
+    margin: auto;
+  }
+  .teamtext div {
+    display: flex;
+    justify-content: space-between;
+  }
+  .teamtext div :first-child {
+    width: 60%;
+  }
+  .teamtext div :last-child {
+    background-color: var(--bg-black);
+    margin-top: auto;
+    color: var(--white);
+    padding: var(--space-xs);
+    border-radius: 40px;
+    width: fit-content;
+  }
+
+  .team-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    align-items: center;
+    margin: auto;
+  }
+  .card {
+    padding: var(--space-l);
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .card:hover {
+    transition: 0.2s;
+    transform: scale(1.05);
+  }
+  .img_wrapper {
+    position: relative;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+  }
+  .card-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20px;
+  }
+  .title {
+    position: absolute;
+    right: var(--space-s);
+    bottom: var(--space-m);
+    background: var(--bg-black);
+    backdrop-filter: blur(5.5px);
+    padding: 0.2em 0.6em;
+    border-radius: 20px;
+    color: var(--white);
+  }
+  .team-cards-grid .card:first-child .title {
+    background: var(--yellow);
+    color: #000;
+  }
+  .desc {
+    font-size: var(--space-xs);
+    color: #666;
+    margin-bottom: var(--space-s);
+    text-align: center;
+  }
+  .social-links {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-s);
+    margin: auto;
+  }
+  .icon {
+    width: 24px;
+    height: 24px;
+  }
+    @media (max-width: 1000px) {
+      .team-cards-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-l);
+      }
+      .teamtext div {
+        flex-direction: column;
+        gap: var(--space-m);
+      }
+      .teamtext div :first-child {
+        width: 100%;
+      }
+      .teamtext div :last-child a {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+      }
+    }
+</style>

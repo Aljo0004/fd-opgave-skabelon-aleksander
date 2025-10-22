@@ -1,0 +1,61 @@
+---
+import Bannerimg from "../assets/images/banner.png";
+import { Image } from "astro:assets";
+---
+
+<article class="banner_grid">
+  <Image class="banner" src={Bannerimg} alt="Banner Image" />
+  <div class="banner_text">
+    <p>about</p>
+    <h2>Creative Services For Boost Your Business Growth</h2>
+  </div>
+</article>
+
+<style>
+  article {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    margin-bottom: var(--space-3xl);
+  }
+  .banner {
+    width: 100%;
+    height: auto;
+    grid-column: 1 / span 3;
+    grid-row: 1 / span 3;
+    object-fit: cover;
+  }
+  .banner_text {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    padding: var(--space-s);
+    background: var(--bg-grey);
+    border-radius: 20px;
+    opacity: 80%;
+  }
+  .banner_text p {
+    background-color: var(--yellow);
+    text-transform: uppercase;
+    margin-bottom: var(--space-2xs);
+    border-radius: 20px;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    display: inline-block;
+    font-size: 12px;
+  }
+  @media (max-width: 800px) {
+    article {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto auto;
+    }
+    .banner {
+      grid-column: 1 / 2;
+      grid-row: 1 / 2;
+    }
+    .banner_text {
+      grid-column: 1 / 2;
+      grid-row: 2 / 3;
+      margin: var(--space-l);
+    }
+  }
+</style>

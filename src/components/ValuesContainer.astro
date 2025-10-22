@@ -1,0 +1,85 @@
+---
+import BarsIcon from "@icons/bars.svg";
+import GlobeIcon from "@icons/globe.svg";
+import GearIcon from "@icons/gear.svg";
+import LayersIcon from "@icons/layers.svg";
+import ArrowRight from "@icons/arrow--right.svg";
+---
+
+<div class="container">
+  <div class="value-box">
+    <LayersIcon />
+    <h3>Creative Ideas</h3>
+    <p>Explore innovative strategies tailored to your goals. Unlock unique solutions that inspire growth and creativity. Drive impactful change.</p>
+    <div class="read-more">
+    <a href="#">Read More</a>
+    <ArrowRight />
+    </div>
+  </div>
+  <div class="value-box">
+    <BarsIcon />
+    <h3>Best Features</h3>
+    <p>Deliver advanced tools designed for seamless integration. Optimize workflows with cutting-edge technology.</p>
+    <div class="read-more">
+    <a href="#">Read More</a>
+    <ArrowRight />
+    </div>
+  </div>
+  <div class="value-box">
+    <GlobeIcon />
+    <h3>Experience</h3>
+    <p>Leverage years of proven expertise across diverse industries. Empower your business with our skilled professionals. Achieve sustainable success.</p>
+    <div class="read-more">
+    <a href="#">Read More</a>
+    <ArrowRight />
+    </div>
+  </div>
+  <div class="value-box">
+    <GearIcon />
+    <h3>Easy Solutions</h3>
+    <p>Streamline your challenges with simple, effective solutions. Ensure hassle-free implementation for measurable results.</p>
+   <div class="read-more">
+    <a href="#">Read More</a>
+    <ArrowRight />
+    </div>
+  </div>
+</div>
+
+<style>
+  .container {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-l);
+    padding: var(--space-l) 0;
+    width: 80%;
+    margin: auto;
+    align-items: flex-start;
+  }
+.read-more {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-s);
+}
+.read-more a {
+  color: var(--bg-black);
+  text-decoration: none;
+}
+  .value-box {
+    border-radius: 20px;
+    padding: var(--space-l);
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-s);
+    flex: 1;
+  }
+   @media (max-width: 800px) {
+    .container {
+      flex-direction: column;
+      width: 90%;
+      gap: var(--space-2xl);
+    }
+   }
+</style>

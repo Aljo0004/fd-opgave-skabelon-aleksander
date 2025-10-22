@@ -1,1 +1,75 @@
 /* Globale styles her */
+:root {
+  /* spacing */
+  --space-3xs: clamp(0.3125rem, 0.3125rem + 0vw, 0.3125rem);
+  --space-2xs: clamp(0.5625rem, 0.5481rem + 0.0641vw, 0.625rem);
+  --space-xs: clamp(0.875rem, 0.8606rem + 0.0641vw, 0.9375rem);
+  --space-s: clamp(1.125rem, 1.0962rem + 0.1282vw, 1.25rem);
+  --space-m: clamp(1.6875rem, 1.6442rem + 0.1923vw, 1.875rem);
+  --space-l: clamp(2.25rem, 2.1923rem + 0.2564vw, 2.5rem);
+  --space-xl: clamp(3.375rem, 3.2885rem + 0.3846vw, 3.75rem);
+  --space-2xl: clamp(4.5rem, 4.3846rem + 0.5128vw, 5rem);
+  --space-3xl: clamp(6.75rem, 6.5769rem + 0.7692vw, 7.5rem);
+
+  /* typografi */
+  --step--2: clamp(0.5208rem, 0.4721rem + 0.2167vw, 0.64rem);
+  --step--1: clamp(0.625rem, 0.5534rem + 0.3182vw, 0.8rem);
+  --step-0: clamp(0.75rem, 0.6477rem + 0.4545vw, 1rem);
+  --step-1: clamp(0.9rem, 0.7568rem + 0.6364vw, 1.25rem);
+  --step-2: clamp(1.08rem, 0.8826rem + 0.8773vw, 1.5625rem);
+  --step-3: clamp(1.296rem, 1.0272rem + 1.1948vw, 1.9531rem);
+  --step-4: clamp(1.5552rem, 1.1927rem + 1.6113vw, 2.4414rem);
+  --step-5: clamp(1.8662rem, 1.3813rem + 2.1555vw, 3.0518rem);
+
+  /* farver */
+  --bg-header: rgba(27, 27, 27, 0.91);
+  --bg-black: #181818;
+  --white: #fff;
+  --yellow: #ffcc4a;
+  --green: #4eaf4e;
+  --bg-grey: #f5f5f5;
+  --bg-card: rgba(38, 38, 38, 0.9);
+  --p-grey: #595566;
+}
+
+h1 {
+  font-family: Cabin;
+  font-size: var(--step-5);
+  line-height: 1.125;
+  font-weight: 700;
+}
+
+h2 {
+  font-family: Cabin;
+  font-size: var(--step-3);
+  font-weight: 700;
+}
+
+h3 {
+  font-family: Cabin;
+  font-size: var(--step-1);
+  line-height: 1.45;
+  font-weight: 600;
+}
+
+h4 {
+  font-family: Cabin;
+  font-size: var(--step-0);
+  line-height: 1.8rem;
+  font-weight: 600;
+}
+
+a {
+  font-family: Cabin;
+  font-size: var(--step-0);
+  line-height: 1.8rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+p {
+  font-family: Lato;
+  font-size: var(--step-0);
+  line-height: 1.5;
+  color: var(--p-grey);
+}

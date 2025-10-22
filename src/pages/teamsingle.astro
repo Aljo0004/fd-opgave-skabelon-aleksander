@@ -1,0 +1,35 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../layouts/Header.astro";
+import Footer from "../layouts/Footer.astro";
+
+import employees from "@data/employees.json";
+const { slug } = Astro.params;
+const employee = employees.find((e) => e.slug === slug);
+---
+
+<Layout>
+  <Header />
+  {
+    employee ? (
+      <section class="employee-single">
+        <img src={employee.img} alt={employee.name} class="employee-img" />
+        <div class="employee-info">
+          <h2>{employee.name}</h2>
+          <h3>{employee.title}</h3>
+          <p>{employee.description_long}</p>
+          <div class="social-links">
+            {employee.social_links.map((link) => (
+              <a href={link.url} target="_blank" rel="noopener" class="social-link">
+                <img src={`/src/icons/${link.icon}.svg`} alt={link.platform} class="icon" />
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    ) : (
+      <p>Employee not found.</p>
+    )
+  }
+</Layout>
+<Footer />

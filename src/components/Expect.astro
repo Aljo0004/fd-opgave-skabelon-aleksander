@@ -1,0 +1,117 @@
+---
+import Checkmark from "@icons/checkmark.svg";
+import CEOImage from "@assets/images/ceo.png";
+import Pattern from "@assets/images/pattern.png";
+import Greenbox from "@assets/images/greenBox.png";
+import Expectpic from "@assets/images/expect_pic.png";
+import { Image } from "astro:assets";
+---
+
+<section>
+  <div class="expect_grid">
+    <div class="img-container">
+      <div class="img-stack">
+        <Image class="pattern" src={Pattern} alt="Pattern" />
+        <Image class="greenbox" src={Greenbox} alt="Greenbox" />
+        <Image class="expectpic" src={Expectpic} alt="Expect" />
+      </div>
+    </div>
+
+    <div class="text-container">
+      <p>WE'LL WORK WITH YOU<br /> <br /></p>
+      <h2 class="expect">What To Expect <br /></h2>
+      <p>Our collaboration is built on transparency, efficiency, and measurable results. Together, we create strategies tailored to your unique needs and goals.</p>
+      <ul>
+        <li>
+          <Checkmark width={32} height={32} class="checkmark" />
+          Collaborate to build actionable strategies that drive sustainable growth and deliver tangible outcomes.
+        </li>
+        <li>
+          <Checkmark width={32} height={32} class="checkmark" />
+          Identify opportunities to optimize processes and implement impactful solutions with measurable results.
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  section {
+    margin-top: var(--space-l);
+    margin-bottom: var(--space-2xl);
+  }
+.expect {
+  font-size: 4rem;
+    margin-bottom: var(--space-m);
+}
+  .expect_grid {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-l);
+    width: 80%;
+    margin: auto;
+  }
+  .img-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+  }
+  .img-stack {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .checkmark {
+    color: var(--green);
+  }
+  li {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-s);
+    margin-bottom: var(--space-s);
+    margin-top: var(--space-l);
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  .pattern {
+    position: absolute;
+    left: -4rem;
+    top: -4rem;
+    width: 250px;
+    height: 250px;
+    z-index: -2;
+    opacity: 0.5;
+  }
+  .greenbox {
+    position: absolute;
+    left: -2rem;
+    top: -2rem;
+    width: 120px;
+    height: 120px;
+    z-index: -1;
+    border-radius: 20px;
+  }
+  .expectpic {
+    border-radius: 20px;
+  }
+  .text-container {
+    flex: 1;
+  }
+   @media (max-width: 800px) {
+    .expect_grid {
+      flex-direction: column;
+      gap: var(--space-2xl);
+    }
+    .img-container {
+      margin-bottom: var(--space-l);
+    }
+    .expect {
+  font-size: 3rem;
+  margin-bottom: var(--space-m);
+}
+   }
+</style>

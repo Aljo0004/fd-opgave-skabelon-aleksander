@@ -1,8 +1,26 @@
 ---
+import Header from "@layouts/Header.astro";
 import Layout from "@layouts/Layout.astro";
+import Expect from "@components/Expect.astro";
+import Experience from "@components/Experience.astro";
+import FinancialProjections from "@components/FinancialProjections.astro";
+import Values from "@components/Values.astro";
 import Hero from "@components/Hero.astro";
+import ContactUs from "@components/ContactUs.astro";
+import Subscribe from "@components/Subscribe.astro";
+import Footer from "@layouts/Footer.astro";
 ---
 
 <Layout>
+  <Header />
+
   <Hero />
+  <Expect />
+  <FinancialProjections />
+  <Experience />
+  <Values />
+  <ContactUs />
+  <Subscribe />
+  <Footer />
 </Layout>
+<style></style>

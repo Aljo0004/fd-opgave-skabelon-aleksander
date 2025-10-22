@@ -1,0 +1,149 @@
+---
+import employees from "@data/employees.json";
+---
+
+<section>
+    <div class="teamtext">
+        <div>
+        <p>our team</p>
+        <h1>We champion the bold to achieve the extraordinary</h1>
+        <p>Our success stems from the synergy between dedicated teams and our valued clients. We prioritize a company culture that fosters exceptional productivity, ensures customer satisfaction, and promotes mutual respect among all team members.</p>       
+    </div>
+    </div>
+
+<div class="team-cards">
+  {
+    employees.slice(0, 3).map((person) => (
+      <div class="card">
+        <div class="img_wrapper">
+          <img src={person.img} alt={person.name} class="card-img" />
+          <p class="title">{person.title}</p>
+        </div>
+        <h3>{person.name}</h3>
+        <p class="desc">{person.description}</p>
+        <div class="social-links">
+          {person.social_links.map((link) => (
+            <a href={link.url} target="_blank" rel="noopener" class="social-link">
+              <img src={`/src/icons/${link.icon}.svg`} alt={link.platform} class="icon" />
+            </a>
+          ))}
+        </div>
+      </div>
+    ))
+  }
+  </div>
+</section>
+
+<style>
+    section {
+        width: 80%;
+        margin: auto;
+    }
+.teamtext{
+width: 80%;
+margin: auto;
+display: grid;
+grid-template-columns: 1fr 1fr;
+}
+.teamtext div {
+    grid-column: 1fr;
+}
+.teamtext div :first-child {
+    text-transform: uppercase;
+    margin-bottom: var(--space-s);
+    margin-top: var(--space-s);
+}
+.teamtext div :nth-child(2) {
+  font-size: 26px;
+}
+.teamtext div :last-child {
+    font-size:14px;
+}
+
+  .team-cards {
+    display: flex;
+    gap: var(--space-l);
+    justify-content: center;
+  }
+
+  .card {
+    padding: var(--space-l);
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .img_wrapper {
+    position: relative;
+  }
+  .card-img {
+    object-fit: cover;
+    margin-bottom: var(--space-s);
+    border-radius: 20px;
+  }
+  .title {
+    position: absolute;
+    right: 1.5rem;
+    bottom: var(--space-l);
+    background: border-radius: 29px;
+    background: var(--bg-black);
+    backdrop-filter: blur(5.5px);
+    padding: 0.2em 0.6em;
+    border-radius: 20px;
+    color: var(--white);
+  }
+  .team-cards .card:first-child .title {
+  background: var(--yellow);
+  color: #000;
+}
+  .desc {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  .social-links {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-s);
+    margin: auto;
+  }
+  .icon {
+    width: 24px;
+    height: 24px;
+  }
+    @media (max-width: 800px) {
+      section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+      }
+      .team-cards {
+        flex-direction: column;
+        gap: var(--space-l);
+        align-items: center;
+        margin: auto;
+      }
+      .teamtext {
+        width: 100%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .teamtext div {
+        flex-direction: column;
+        gap: var(--space-m);
+        align-items: center;
+        text-align: center;
+      }
+      .teamtext div :first-child {
+        margin-bottom: 0;
+      }
+    }
+</style>
+---
+

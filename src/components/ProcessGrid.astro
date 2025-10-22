@@ -1,0 +1,105 @@
+---
+import { Image } from "astro:assets";
+import Pattern from "@assets/images/pattern.png";
+import GreenBox from "@assets/images/greenBox.png";
+import Portrait from "@assets/images/portrait.png";
+import Argument from "@assets/images/argument.png";
+import Work from "@assets/images/work.png";
+---
+
+<div class="process_grid">
+  <Image class="portrait" src={Portrait} alt="portrait" />
+  <div class="grid-stack">
+    <Image class="pattern" src={Pattern} alt="Pattern" />
+    <Image class="greenbox" src={GreenBox} alt="GreenBox" />
+    <Image class="argument" src={Argument} alt="Argument" />
+  </div>
+  <Image class="work" src={Work} alt="Work" />
+</div>
+
+<style>
+  .process_grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: var(--space-s);
+    z-index: 0;
+    margin-top: var(--space-2xl);
+  }
+  .portrait {
+    grid-column: 1 / 2;
+    grid-row: 1 / span 2;
+    border-radius: 20px;
+  }
+  .grid-stack {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .pattern {
+    position: absolute;
+    right: -3rem;
+    top: -3rem;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    pointer-events: none;
+  }
+  .greenbox {
+    position: absolute;
+    left: -17rem;
+    top: 15rem;
+    width: 90%;
+    height: 80%;
+    z-index: -1;
+    pointer-events: none;
+    border-radius: 20px;
+  }
+  .argument {
+    position: relative;
+    z-index: 0;
+    width: 100%;
+    height: auto;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+  }
+  .work {
+    border-radius: 20px;
+  }
+   @media (max-width: 800px) {
+    .process_grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto auto;
+      gap: var(--space-l);
+    }
+    .portrait {
+      grid-column: 1 / 2;
+      grid-row: 1 / 2;
+      width: 100%;
+      height: auto;
+    }
+    .grid-stack {
+      grid-column: 1 / 2;
+      grid-row: 2 / 3;
+      width: 100%;
+      height: auto;
+    }
+    .work {
+      grid-column: 1 / 2;
+      grid-row: 3 / 4;
+      width: 100%;
+      height: auto;
+    }
+    .greenbox {
+      display: none;
+    }
+    .pattern {
+      display: none;
+    }
+   }
+</style>

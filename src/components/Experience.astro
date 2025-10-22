@@ -1,0 +1,108 @@
+---
+
+---
+
+<div class="bg">
+  <div class="experience-section">
+    <div class="experience">
+      <p>EXPERIENCE</p>
+      <h1>More than 25 years of experience</h1>
+      <p>3000+ our clients are insured around the world</p>
+    </div>
+    <div class="stats">
+      <div class="stattext">
+        <div class="stat" style="--percent: 85"></div>
+        <p>Consistency</p>
+      </div>
+      <div class="stattext">
+        <div class="stat" style="--percent: 95"></div>
+        <p>Improvement</p>
+      </div>
+      <div class="stattext">
+        <div class="stat" style="--percent: 90"></div>
+        <p>Branching</p>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .bg {
+    background-color: var(--yellow);
+    width: 100%;
+  }
+  .experience-section {
+    padding-top: var(--space-3xl);
+    padding-bottom: var(--space-3xl);
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: auto;
+    align-items: center;
+  }
+  .experience p {
+    color: var(--bg-black);
+    margin-bottom: var(--space-s);
+  }
+  .experience :last-child {
+    margin-top: var(--space-s);
+  }
+  .stats {
+    display: flex;
+    gap: var(--space-s);
+    width: min(500px, 100% - var(--space-s));
+  }
+  .stat {
+    container: stat / inline-size;
+    --actualPercent: calc(var(--percent) * 1%);
+    --border-width: 5px;
+    aspect-ratio: 1;
+    width: 150px;
+    border-radius: calc(infinity * 1px);
+    border: var(--border-width) solid transparent;
+    background:
+      conic-gradient(var(--yellow) 0 0) padding-box,
+      conic-gradient(white var(--actualPercent), var(--p-grey) 0) border-box;
+    font-weight: bolder;
+    display: grid;
+    counter-reset: c var(--percent);
+    &::before,
+    &::after {
+      grid-area: 1 / 1;
+    }
+
+    &::after {
+      content: counter(c, decimal-leading-zero) "%";
+      place-self: center;
+      font-size: 30cqw;
+      font-variant-numeric: tabular-nums;
+    }
+
+    &::before {
+      content: "";
+      aspect-ratio: 1;
+      border-radius: 99px;
+      width: 20px;
+      offset-path: border-box;
+      offset-distance: var(--actualPercent);
+      background: var(--bg-black);
+      offset-anchor: 50% calc(50% - var(--border-width) / 2);
+    }
+  }
+  .stattext p {
+    text-align: center;
+    margin-top: var(--space-s);
+    font-weight: bold;
+    color: #000;
+  }
+   @media (max-width: 800px) {
+    .experience-section {
+      flex-direction: column;
+      gap: var(--space-3xl);
+      text-align: center;
+    }
+    .stats {
+      width: 100%;
+      justify-content: center;
+    }
+   }
+</style>

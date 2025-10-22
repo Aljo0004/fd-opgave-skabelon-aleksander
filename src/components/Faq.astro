@@ -1,0 +1,35 @@
+---
+import Questions from "./Questions.astro";
+---
+
+<section>
+  <p>faq</p>
+  <h1>Customer Questions</h1>
+  <Questions />
+</section>
+
+<style>
+  section {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-l);
+    width: 80%;
+    margin: auto;
+    background-color: var(--bg-grey);
+    padding-bottom: 10rem;
+    padding-top: 10rem;
+    margin-top: var(--space-2xl);
+    border-radius: 40px;
+  }
+  section p {
+    text-transform: uppercase;
+  }
+  @media (max-width: 800px) {
+    section {
+      width: 90%;
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+  }
+</style>
