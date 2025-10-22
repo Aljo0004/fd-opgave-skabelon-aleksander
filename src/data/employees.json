@@ -118,17 +118,17 @@
       {
         "platform": "instagram",
         "url": "#",
-        "icon": "/images/instagram.svg"
+        "icon": "/images/instagram"
       },
       {
         "platform": "facebook",
         "url": "#",
-        "icon": "/images/facebook.svg"
+        "icon": "/images/facebook"
       },
       {
         "platform": "twitter",
         "url": "#",
-        "icon": "/images/twitter.svg"
+        "icon": "/images/twitter"
       }
     ],
     "slug": "ryan-jackson",
