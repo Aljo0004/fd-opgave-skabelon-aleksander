@@ -46,8 +46,7 @@ background-color: var(--bg-black);
 height: auto;
 }```
 
-Derudover benyttede jeg mig af **pseudo-elementer**, `::before`og `::after`. De bliver egentlig brugt til at generere ekstra indhold før og efter elementets egentlige indhold. Derudover har jeg nestet dem, så de ligger direkte inde i min parent selector, i dette tilfælde `.stat`.
-
+Derudover benyttede jeg mig af **pseudo-elementer**, `::before` og `::after`. De bliver egentlig brugt til at generere ekstra indhold før og efter elementets egentlige indhold. Derudover har jeg nestet dem, så de ligger direkte inde i min parent selector, i dette tilfælde `.stat`.
 ```css
 .stat {
 container: stat / inline-size;
